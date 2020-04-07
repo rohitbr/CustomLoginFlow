@@ -46,6 +46,12 @@ class LoginViewModel: ObservableObject {
     func buttonAction() {
         var subscriptions = Set<AnyCancellable>()
 
+        if username.isEmpty || password.isEmpty {
+            self.description = "Username or Password is Empty"
+            self.showModal.toggle()
+            return
+        }
+
         let signin = Self.awsService.signIn(userName: username, password: password)
 
         signin
