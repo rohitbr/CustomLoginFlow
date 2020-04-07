@@ -39,7 +39,7 @@ struct SignupView: View {
 
             NavigationLink(destination: HomeView(), isActive: $goToHome) {
                 RedRoundedButton("Sign up") {
-                    self.buttonActionSignup()
+//                    self.buttonActionSignup()
                 }
             }
             Spacer()
@@ -51,20 +51,20 @@ struct SignupView: View {
     .navigationBarBackButtonHidden(true)
     }
 
-    func buttonActionSignup() {
-        var subscriptions = Set<AnyCancellable>()
-        let signUp = AuthenticationService.instance.signUp(username: username, password: password)
-
-        signUp
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: {
-                print($0)
-            }, receiveValue: { signInResut in
-                print(signInResut ?? "")
-                self.goToHome.toggle()
-            })
-            .store(in: &subscriptions)
-    }
+//    func buttonActionSignup() {
+//        var subscriptions = Set<AnyCancellable>()
+//        let signUp = AuthenticationService.instance.signUp(username: username, password: password)
+//
+//        signUp
+//            .receive(on: DispatchQueue.main)
+//            .sink(receiveCompletion: {
+//                print($0)
+//            }, receiveValue: { signInResut in
+//                print(signInResut ?? "")
+//                self.goToHome.toggle()
+//            })
+//            .store(in: &subscriptions)
+//    }
 }
 
 struct SignupView_Previews: PreviewProvider {

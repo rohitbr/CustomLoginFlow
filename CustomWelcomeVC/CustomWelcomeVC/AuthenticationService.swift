@@ -9,30 +9,23 @@
 import Foundation
 import AWSMobileClient
 import Combine
-//import KRProgressHUD
 
-class AuthenticationService : ObservableObject {
+class AuthenticationService {
 
-    // static properties
     static let instance = AuthenticationService()
 
-    // Published properties
-    @Published private(set) var userState = UserState.unknown
-    @Published private(set) var userInfo:[String: String] = [:]
+    var userState = UserState.unknown
 
-    private init() {
-        print("items allocated in user state")
-        
-        AWSMobileClient.default().addUserStateListener(self) { [weak self] (userState, info) in
-            DispatchQueue.main.async {
-                self?.userState = userState
-                self?.userInfo = info
+    func getUserState() -> AnyPublisher<UserState?, Error> {
+        return Future<UserState?, Error> { promise in
+            AWSMobileClient.default().initialize { (userState, error) in
+                if let error = error {
+                    return promise(.failure(error))
+                } else {
+                    return promise(.success(userState))
+                }
             }
-        }
-        
-        AWSMobileClient.default().initialize { [unowned self] (userState, error) in
-            self.userState = userState ?? UserState.unknown
-        }
+        }.eraseToAnyPublisher()
     }
     
     func signIn(userName: String, password: String) -> AnyPublisher<SignInResult?, Error> {

@@ -10,34 +10,19 @@ import SwiftUI
 import Combine
 
 struct HomeView: View {
-    var authService = AuthenticationService.instance
-    @State var signOutSuccess = false
+    @ObservedObject var viewModel = HomeViewModel()
 
     var body: some View {
         VStack {
-            if signOutSuccess {
+            if self.viewModel.signOutSuccess {
                 WelcomeView()
             } else {
                 Button("Sign out") {
-                    self.signOut()
+                    self.viewModel.signOut()
                 }
             }
         }
-    }
-
-    func signOut() {
-        let signOut = authService.signOut()
-
-        var subscriptions = Set<AnyCancellable>()
-
-        signOut
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: {
-                print($0)
-            }, receiveValue: { signOutResut in
-                self.signOutSuccess = true
-            })
-            .store(in: &subscriptions)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

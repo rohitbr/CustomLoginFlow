@@ -11,81 +11,58 @@ import Combine
 import AWSMobileClient
 
 struct LoginMainView: View {
-    @State private var username : String = ""
-    @State private var password : String = ""
-    @State private var goToHome = false
+
     @State private var goToSignup = false
-    @State private var showModal = false
-    @State private var description = ""
-    @State private var recievedSuccess = false
+    @ObservedObject var viewModel : LoginViewModel
 
     var body: some View {
-        NavigationView {
-            VStack (spacing: 20) {
-                Image(Images.kLogoName)
-                    .padding(.top, 20)
+        VStack (spacing: 20) {
+            Image(Images.kLogoName)
+                .padding(.top, 20)
 
-                Spacer()
+            Spacer()
 
-                TextField("Username", text: $username)
-                    .multilineTextAlignment(.center)
-                    .padding(10)
-                    .autocapitalization(.none)
-                TextField("Password", text: $password)
-                    .multilineTextAlignment(.center)
-                    .padding(10)
+            TextField("Username", text: $viewModel.username)
+                .multilineTextAlignment(.center)
+                .padding(10)
+                .autocapitalization(.none)
+            TextField("Password", text: $viewModel.password)
+                .multilineTextAlignment(.center)
+                .padding(10)
 
 
-                Button("Forgot Password") {
+            Button("Forgot Password") {
 
-                }.font(.subheadline)
+            }.font(.subheadline)
 
-                Spacer()
+            Spacer()
 
+            NavigationLink(destination: HomeView(), isActive: $viewModel.gotoHomeView) {
                 RedRoundedButton("Sign in") {
-                    self.buttonAction()
+                    self.viewModel.buttonAction()
                 }
+            }
 
-                NavigationLink(destination: SignupView(), isActive: $goToSignup) {
-                    GrayButton("Dont have account ? Sign Up") {
-                        self.goToSignup.toggle()
-                    }
+
+            NavigationLink(destination: SignupView(), isActive: $goToSignup) {
+                GrayButton("Dont have account ? Sign Up") {
+                    self.goToSignup.toggle()
                 }
             }
         }
-        .alert(isPresented: $showModal) {
-            Alert(title: Text("Auth message"), message: Text(self.description), dismissButton: .destructive(Text("Ok")) {
-
+        .alert(isPresented: $viewModel.showModal) {
+            Alert(title: Text("Auth message"), message: Text(viewModel.description), dismissButton: .destructive(Text("Ok")) {
+                self.viewModel.okButtonPressed()
                 })
         }
-    }
-
-    func buttonAction() {
-        var subscriptions = Set<AnyCancellable>()
-
-        let signin = AuthenticationService.instance.signIn(userName: username, password: password)
-
-        signin
-            .mapError { error in APIError.mapError(error.localizedDescription)}
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: {
-                switch $0 {
-                case .failure(.mapError(let str)) :
-                    self.showModal.toggle()
-                    self.description = str
-                default:
-                    break
-                }
-
-            }, receiveValue: { signInResut in
-                print(signInResut ?? "")
-            })
-            .store(in: &subscriptions)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-struct LoginMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginMainView()
-    }
-}
+//struct LoginMainView_Previews: PreviewProvider {
+//    @ObservedObject var viewModel = LoginViewModel()
+//
+//    static var previews: some View {
+//        return LoginMainView(viewModel: viewModel)
+//    }
+//}
