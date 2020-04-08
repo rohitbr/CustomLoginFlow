@@ -19,6 +19,9 @@ struct ForgotPasswordView: View {
                 .padding(.top, 20)
 
             Spacer()
+            NavigationLink(destination: ConfirmForgotPasswordView(viewModel: .init()), isActive: $viewModel.gotoVerificationView) {
+                EmptyView().frame(width: 0, height: 0, alignment: .center)
+            }
 
             TextField("Email address", text: $viewModel.username)
                 .textFieldStyle(CustomTextFieldStyle())
@@ -28,13 +31,6 @@ struct ForgotPasswordView: View {
 
             RedRoundedButton("Reset Password") {
                 self.viewModel.forgotPasswordAction()
-            }.font(.subheadline)
-                .padding(5)
-                .border(Color.black, width: 1)
-                .foregroundColor(Color.red)
-
-            NavigationLink(destination: ConfirmForgotPasswordView(viewModel: .init()), isActive: $viewModel.gotoVerificationView) {
-               Text("")
             }
 
             GrayButton("Already have an Account? Sign in") {
@@ -46,6 +42,7 @@ struct ForgotPasswordView: View {
                     self.viewModel.okButtonPressed()
                 })
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
