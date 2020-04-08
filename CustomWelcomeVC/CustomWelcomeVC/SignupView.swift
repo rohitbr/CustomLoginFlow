@@ -25,15 +25,11 @@ struct SignupView: View {
             Spacer()
 
             TextField("Username", text: $username)
-                .multilineTextAlignment(.center)
-                .padding(10)
-                .autocapitalization(.none)
+                .textFieldStyle(CustomTextFieldStyle())
             TextField("Password", text: $password)
-                .multilineTextAlignment(.center)
-                .padding(10)
-            TextField("Confirm Password", text: $confirmPassword)
-                .multilineTextAlignment(.center)
-                .padding(10)
+                .textFieldStyle(CustomTextFieldStyle())
+            TextField("Password", text: $confirmPassword)
+                .textFieldStyle(CustomTextFieldStyle())
 
             Spacer()
 

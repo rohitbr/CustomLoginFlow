@@ -70,4 +70,30 @@ class AuthenticationService {
             }
         }.eraseToAnyPublisher()
     }
+
+    func forgotPassword(username: String) -> AnyPublisher<ForgotPasswordResult?, Error> {
+        return Future<ForgotPasswordResult?, Error> { promise in
+
+            AWSMobileClient.default().forgotPassword(username: username.lowercased()) { (forgotPasswordResult, error) in
+                guard error == nil else {
+                    print("Forgot password > UserName: \(username) > Error: \(error!.localizedDescription)")
+                    return promise(.failure(error!))
+                }
+                promise(.success(forgotPasswordResult))
+                
+            }
+        }.eraseToAnyPublisher()
+    }
+
+    func confirmForgotPassword(username: String, newPassword: String, code: String) -> AnyPublisher<ForgotPasswordResult?, Error> {
+         return Future<ForgotPasswordResult?, Error> { promise in
+        AWSMobileClient.default().confirmForgotPassword(username: username.lowercased(), newPassword: newPassword, confirmationCode: code) { (forgotPasswordResult, error) in
+                guard let forgotPasswordResult = forgotPasswordResult else {
+                    print("Confirm password > UserName: \(username) > Error: \(error!.localizedDescription)")
+                    return promise(.failure(error!))
+                }
+                promise(.success(forgotPasswordResult))
+            }
+        }.eraseToAnyPublisher()
+    }
 }

@@ -13,6 +13,8 @@ import AWSMobileClient
 struct LoginMainView: View {
 
     @State private var goToSignup = false
+    @State private var goToForgotPassword = false
+
     @ObservedObject var viewModel : LoginViewModel
 
     var body: some View {
@@ -23,19 +25,22 @@ struct LoginMainView: View {
             Spacer()
 
             TextField("Username", text: $viewModel.username)
-                .multilineTextAlignment(.center)
-                .padding(10)
-                .autocapitalization(.none)
+                .textFieldStyle(CustomTextFieldStyle())
             TextField("Password", text: $viewModel.password)
-                .multilineTextAlignment(.center)
-                .padding(10)
-
+                .textFieldStyle(CustomTextFieldStyle())
 
             Button("Forgot Password") {
-
+                self.goToForgotPassword.toggle()
             }.font(.subheadline)
+                .padding(5)
+                .border(Color.black, width: 1)
+                .foregroundColor(Color.red)
 
             Spacer()
+
+            NavigationLink(destination: ForgotPasswordView(viewModel: .init()), isActive: $goToForgotPassword) {
+               Text("")
+            }
 
             NavigationLink(destination: HomeView(), isActive: $viewModel.gotoHomeView) {
                 RedRoundedButton("Sign in") {

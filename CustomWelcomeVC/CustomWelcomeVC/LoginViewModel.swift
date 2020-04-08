@@ -6,7 +6,6 @@
 //  Copyright © 2020 lumasecurity. All rights reserved.
 //
 
-import UIKit
 import Combine
 import AWSMobileClient
 
