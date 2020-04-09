@@ -33,8 +33,3 @@ struct ConfirmForgotPasswordView: View {
     }
 }
 
-//struct ConfirmForgotPasswordView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ConfirmForgotPasswordView()
-//    }
-//}

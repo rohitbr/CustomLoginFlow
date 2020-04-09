@@ -64,11 +64,3 @@ struct LoginMainView: View {
         }
     }
 }
-
-//struct LoginMainView_Previews: PreviewProvider {
-//    @ObservedObject var viewModel = LoginViewModel()
-//
-//    static var previews: some View {
-//        return LoginMainView(viewModel: viewModel)
-//    }
-//}
