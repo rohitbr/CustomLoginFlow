@@ -53,7 +53,7 @@ class ConfirmPasswordViewModel: ObservableObject {
 
     func okButtonPressed() {
         if self.description.compare(self.kVerified) == .orderedSame  {
-            LaunchRoot.rootView(ContentView())
+            LaunchRoot.rootView(LoginMainView())
         }
     }
 }
