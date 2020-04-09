@@ -37,7 +37,9 @@ class LoginViewModel: ObservableObject {
     }
 
     func okButtonPressed() {
-        LaunchRoot.rootView(ContentView())
+        if self.description.compare(kSuccessful) == .orderedSame  {
+            LaunchRoot.rootView(ContentView())
+        }
     }
 
     func buttonAction() {
