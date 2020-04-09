@@ -8,6 +8,7 @@
 
 import Combine
 import AWSMobileClient
+import SwiftUI
 
 class LoginViewModel: ObservableObject {
 
@@ -15,7 +16,6 @@ class LoginViewModel: ObservableObject {
     @Published public var username : String = ""
     @Published public var password : String = ""
     @Published public var showModal = false
-    @Published public var gotoHomeView = false
     @Published public var description = ""
     @Published public var userState = UserState.unknown
 
@@ -37,9 +37,7 @@ class LoginViewModel: ObservableObject {
     }
 
     func okButtonPressed() {
-        if self.description.compare(kSuccessful) == .orderedSame  {
-            self.gotoHomeView.toggle()
-        }
+        LaunchRoot.rootView(ContentView())
     }
 
     func buttonAction() {

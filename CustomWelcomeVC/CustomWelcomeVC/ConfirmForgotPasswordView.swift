@@ -28,12 +28,8 @@ struct ConfirmForgotPasswordView: View {
         .alert(isPresented: $viewModel.showModal) {
             Alert(title: Text("Auth message"), message: Text(self.viewModel.description), dismissButton: .destructive(Text("Ok")) {
                 self.viewModel.okButtonPressed()
-                if self.viewModel.gotoLoginView {
-                    self.presentationMode.wrappedValue.dismiss()
-                }
                 })
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

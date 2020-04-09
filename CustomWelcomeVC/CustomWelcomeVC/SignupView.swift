@@ -10,11 +10,7 @@ import SwiftUI
 import Combine
 
 struct SignupView: View {
-
-    @State private var username : String = ""
-    @State private var password : String = ""
-    @State private var confirmPassword : String = ""
-    @State private var goToHome = false
+    @ObservedObject var viewModel : SignupViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
@@ -24,18 +20,18 @@ struct SignupView: View {
 
             Spacer()
 
-            TextField("Username", text: $username)
+            TextField("Username", text: $viewModel.username)
                 .textFieldStyle(CustomTextFieldStyle())
-            TextField("Password", text: $password)
+            TextField("Password", text: $viewModel.password)
                 .textFieldStyle(CustomTextFieldStyle())
-            TextField("Password", text: $confirmPassword)
+            TextField("Confirm Password", text: $viewModel.confirmPassword)
                 .textFieldStyle(CustomTextFieldStyle())
 
             Spacer()
 
-            NavigationLink(destination: HomeView(), isActive: $goToHome) {
+            NavigationLink(destination: HomeView(), isActive: $viewModel.goToHome) {
                 RedRoundedButton("Sign up") {
-//                    self.buttonActionSignup()
+                    self.viewModel.buttonActionSignup()
                 }
             }
             Spacer()
@@ -44,27 +40,16 @@ struct SignupView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
-    .navigationBarBackButtonHidden(true)
+        .alert(isPresented: $viewModel.showModal) {
+            Alert(title: Text("Auth message"), message: Text(self.viewModel.description), dismissButton: .destructive(Text("Ok")) {
+                self.viewModel.okButtonPressed()
+                })
+        }
     }
+}
 
-//    func buttonActionSignup() {
-//        var subscriptions = Set<AnyCancellable>()
-//        let signUp = AuthenticationService.instance.signUp(username: username, password: password)
-//
-//        signUp
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: {
-//                print($0)
-//            }, receiveValue: { signInResut in
-//                print(signInResut ?? "")
-//                self.goToHome.toggle()
-//            })
-//            .store(in: &subscriptions)
+//struct SignupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignupView()
 //    }
-}
-
-struct SignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignupView()
-    }
-}
+//}

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F90AE8BA24366B1F005F90C8 /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90AE8B924366B1F005F90C8 /* LoginMainView.swift */; };
+		F934C759243E6DF1002755B3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C758243E6DF1002755B3 /* SignupViewModel.swift */; };
+		F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C75A243ECED8002755B3 /* LaunchRoot.swift */; };
 		F9A3C5F32437710B00C25358 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F22437710B00C25358 /* RoundedButton.swift */; };
 		F9A3C5F52437715700C25358 /* ColorUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F42437715700C25358 /* ColorUtilities.swift */; };
 		F9A3C5FB243AF27F00C25358 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5FA243AF27F00C25358 /* APIError.swift */; };
@@ -38,6 +40,8 @@
 		6CC575B1829857008816B036 /* Pods-CustomWelcomeVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomWelcomeVC.release.xcconfig"; path = "Target Support Files/Pods-CustomWelcomeVC/Pods-CustomWelcomeVC.release.xcconfig"; sourceTree = "<group>"; };
 		EA9DB563109081C93809DA17 /* Pods-CustomWelcomeVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomWelcomeVC.debug.xcconfig"; path = "Target Support Files/Pods-CustomWelcomeVC/Pods-CustomWelcomeVC.debug.xcconfig"; sourceTree = "<group>"; };
 		F90AE8B924366B1F005F90C8 /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
+		F934C758243E6DF1002755B3 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		F934C75A243ECED8002755B3 /* LaunchRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRoot.swift; sourceTree = "<group>"; };
 		F9A3C5F22437710B00C25358 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F9A3C5F42437715700C25358 /* ColorUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilities.swift; sourceTree = "<group>"; };
 		F9A3C5FA243AF27F00C25358 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -93,6 +97,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F934C757243E6DC8002755B3 /* Utitlities */ = {
+			isa = PBXGroup;
+			children = (
+				F9A4C7F0243D17B3000B9658 /* CustomTextFieldStyle.swift */,
+				F9A3C5F42437715700C25358 /* ColorUtilities.swift */,
+				F9A3C5F22437710B00C25358 /* RoundedButton.swift */,
+				F934C75A243ECED8002755B3 /* LaunchRoot.swift */,
+			);
+			path = Utitlities;
+			sourceTree = "<group>";
+		};
 		F9A4C7EB243BCA90000B9658 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +136,10 @@
 		F9A65EC024351B530091A215 /* CustomWelcomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				F9A4C7F0243D17B3000B9658 /* CustomTextFieldStyle.swift */,
 				F9A65EC124351B530091A215 /* AppDelegate.swift */,
 				F9A65EC324351B530091A215 /* SceneDelegate.swift */,
 				F9A65EC524351B530091A215 /* ContentView.swift */,
+				F934C757243E6DC8002755B3 /* Utitlities */,
 				F9A65ED524351F190091A215 /* WelcomeView.swift */,
 				F9A65EE024352A1D0091A215 /* HomeView.swift */,
 				F9A4C7EC243BDAEA000B9658 /* HomeViewModel.swift */,
@@ -134,9 +149,8 @@
 				F9A4C7F6243D2169000B9658 /* ForgotPasswordViewModel.swift */,
 				F9A4C7F8243D7699000B9658 /* ConfirmForgotPasswordView.swift */,
 				F9A4C7FA243D76D8000B9658 /* ConfirmPasswordViewModel.swift */,
-				F9A3C5F42437715700C25358 /* ColorUtilities.swift */,
-				F9A3C5F22437710B00C25358 /* RoundedButton.swift */,
 				F9A72A0E24367C5600E92DC4 /* SignupView.swift */,
+				F934C758243E6DF1002755B3 /* SignupViewModel.swift */,
 				F9A65EDC2435252B0091A215 /* AuthenticationService.swift */,
 				F9A4C7EB243BCA90000B9658 /* Repository */,
 				F9A3C5FA243AF27F00C25358 /* APIError.swift */,
@@ -280,7 +294,9 @@
 				F9A65EC224351B530091A215 /* AppDelegate.swift in Sources */,
 				F9A65EE124352A1D0091A215 /* HomeView.swift in Sources */,
 				F9A65EC424351B530091A215 /* SceneDelegate.swift in Sources */,
+				F934C759243E6DF1002755B3 /* SignupViewModel.swift in Sources */,
 				F9A65EDB2435223E0091A215 /* Images.swift in Sources */,
+				F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */,
 				F9A4C7F9243D7699000B9658 /* ConfirmForgotPasswordView.swift in Sources */,
 				F9A65EDD2435252B0091A215 /* AuthenticationService.swift in Sources */,
 				F9A65EC624351B530091A215 /* ContentView.swift in Sources */,

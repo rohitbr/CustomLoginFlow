@@ -42,7 +42,6 @@ struct ForgotPasswordView: View {
                     self.viewModel.okButtonPressed()
                 })
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -17,7 +17,6 @@ class ConfirmPasswordViewModel: ObservableObject {
     @Published public var newPassword : String = ""
     @Published public var description = ""
     @Published public var showModal = false
-    @Published public var gotoLoginView = false 
     
     static let awsService = AuthenticationService.instance
 
@@ -53,8 +52,6 @@ class ConfirmPasswordViewModel: ObservableObject {
     }
 
     func okButtonPressed() {
-        if self.description.compare(self.kVerified) == .orderedSame  {
-            self.gotoLoginView.toggle()
-        }
+        LaunchRoot.rootView(ContentView())
     }
 }

@@ -32,7 +32,7 @@ struct WelcomeView: View {
 
                 Spacer()
 
-                NavigationLink(destination: LoginMainView(viewModel: .init()), isActive: $goToNext) {
+                NavigationLink(destination: LoginMainView(), isActive: $goToNext) {
                     RedRoundedButton("Use Onelink Account") {
                         self.goToNext.toggle()
                     }

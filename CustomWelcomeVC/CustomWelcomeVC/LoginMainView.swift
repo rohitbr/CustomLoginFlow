@@ -17,6 +17,11 @@ struct LoginMainView: View {
 
     @ObservedObject var viewModel : LoginViewModel
 
+    init(){
+        UINavigationBar.setAnimationsEnabled(false)
+        self.viewModel = LoginViewModel()
+    }
+
     var body: some View {
         VStack (spacing: 20) {
             Image(Images.kLogoName)
@@ -42,14 +47,11 @@ struct LoginMainView: View {
                Text("")
             }
 
-            NavigationLink(destination: HomeView(), isActive: $viewModel.gotoHomeView) {
-                RedRoundedButton("Sign in") {
-                    self.viewModel.buttonAction()
-                }
+            RedRoundedButton("Sign in") {
+                self.viewModel.buttonAction()
             }
 
-
-            NavigationLink(destination: SignupView(), isActive: $goToSignup) {
+            NavigationLink(destination: SignupView(viewModel: .init()), isActive: $goToSignup) {
                 GrayButton("Dont have account ? Sign Up") {
                     self.goToSignup.toggle()
                 }
@@ -60,7 +62,6 @@ struct LoginMainView: View {
                 self.viewModel.okButtonPressed()
                 })
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 
