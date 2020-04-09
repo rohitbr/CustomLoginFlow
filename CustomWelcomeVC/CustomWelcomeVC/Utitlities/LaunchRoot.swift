@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class LaunchRoot : NSObject {
+class LaunchRoot  {
     static func rootView<V>(_ destinationView : V) where V: View {
         // Use a UIHostingController as window root view controller.
         let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
