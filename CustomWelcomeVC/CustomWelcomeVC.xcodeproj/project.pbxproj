@@ -10,6 +10,7 @@
 		F90AE8BA24366B1F005F90C8 /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90AE8B924366B1F005F90C8 /* LoginMainView.swift */; };
 		F934C759243E6DF1002755B3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C758243E6DF1002755B3 /* SignupViewModel.swift */; };
 		F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C75A243ECED8002755B3 /* LaunchRoot.swift */; };
+		F959196224412891002470E0 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959196124412891002470E0 /* InputValidator.swift */; };
 		F9A3C5F32437710B00C25358 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F22437710B00C25358 /* RoundedButton.swift */; };
 		F9A3C5F52437715700C25358 /* ColorUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F42437715700C25358 /* ColorUtilities.swift */; };
 		F9A3C5FB243AF27F00C25358 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5FA243AF27F00C25358 /* APIError.swift */; };
@@ -42,6 +43,7 @@
 		F90AE8B924366B1F005F90C8 /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		F934C758243E6DF1002755B3 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		F934C75A243ECED8002755B3 /* LaunchRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRoot.swift; sourceTree = "<group>"; };
+		F959196124412891002470E0 /* InputValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		F9A3C5F22437710B00C25358 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F9A3C5F42437715700C25358 /* ColorUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilities.swift; sourceTree = "<group>"; };
 		F9A3C5FA243AF27F00C25358 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				F90AE8B924366B1F005F90C8 /* LoginMainView.swift */,
 				F9A4C7E8243BAE01000B9658 /* LoginViewModel.swift */,
 				F9A4C7F4243D1E1D000B9658 /* ForgotPasswordView.swift */,
+				F959196124412891002470E0 /* InputValidator.swift */,
 				F9A4C7F6243D2169000B9658 /* ForgotPasswordViewModel.swift */,
 				F9A4C7F8243D7699000B9658 /* ConfirmForgotPasswordView.swift */,
 				F9A4C7FA243D76D8000B9658 /* ConfirmPasswordViewModel.swift */,
@@ -309,6 +312,7 @@
 				F90AE8BA24366B1F005F90C8 /* LoginMainView.swift in Sources */,
 				F9A3C5FB243AF27F00C25358 /* APIError.swift in Sources */,
 				F9A4C7F1243D17B3000B9658 /* CustomTextFieldStyle.swift in Sources */,
+				F959196224412891002470E0 /* InputValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

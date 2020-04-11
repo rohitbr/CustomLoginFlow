@@ -18,11 +18,28 @@ class LoginViewModel: ObservableObject {
     @Published public var showModal = false
     @Published public var description = ""
     @Published public var userState = UserState.unknown
+    @Published public var userEntryValid = false
+
+    private var validateEntries : AnyPublisher <Bool, Never> {
+        return Publishers.CombineLatest($username, $password)
+            .map { username, password in
+                guard !username.isEmpty && !password.isEmpty else {
+                    return false
+            }
+            return true
+        }
+        .eraseToAnyPublisher()
+    }
 
     static let awsService = AuthenticationService.instance
     
     init() {
+        var subscriptions = Set<AnyCancellable>()
         getUserState()
+        validateEntries
+            .receive(on: RunLoop.main)
+            .assign(to: \.userEntryValid, on: self)
+            .store(in: &subscriptions)
     }
 
     func getUserState() {
@@ -44,12 +61,6 @@ class LoginViewModel: ObservableObject {
 
     func buttonAction() {
         var subscriptions = Set<AnyCancellable>()
-
-        if username.isEmpty || password.isEmpty {
-            self.description = "Username or Password is Empty"
-            self.showModal.toggle()
-            return
-        }
 
         let signin = Self.awsService.signIn(userName: username, password: password)
 

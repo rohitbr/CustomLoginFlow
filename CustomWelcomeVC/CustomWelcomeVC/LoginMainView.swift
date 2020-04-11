@@ -50,6 +50,8 @@ struct LoginMainView: View {
             RedRoundedButton("Sign in") {
                 self.viewModel.buttonAction()
             }
+            .disabled(self.viewModel.userEntryValid ? false : true)
+            .opacity(self.viewModel.userEntryValid ?  1 : 0.6 )
 
             NavigationLink(destination: SignupView(viewModel: .init()), isActive: $goToSignup) {
                 GrayButton("Dont have account ? Sign Up") {
