@@ -19,7 +19,7 @@ struct CustomTextFieldStyle : TextFieldStyle {
             .background(
                 RoundedRectangle(cornerRadius: 5)
                     .strokeBorder(Color.primary.opacity(0.5), lineWidth: 1))
-            .padding(10)
-
+            .padding(.leading, 10)
+            .padding(.trailing, 10)
     }
 }

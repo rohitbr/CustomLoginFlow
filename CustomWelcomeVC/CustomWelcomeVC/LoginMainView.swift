@@ -29,10 +29,23 @@ struct LoginMainView: View {
 
             Spacer()
 
-            TextField("Username", text: $viewModel.username)
-                .textFieldStyle(CustomTextFieldStyle())
-            TextField("Password", text: $viewModel.password)
-                .textFieldStyle(CustomTextFieldStyle())
+            Group {
+                TextField("Username", text: $viewModel.username)
+                    .textFieldStyle(CustomTextFieldStyle())
+
+                Text(self.viewModel.usernameDesc.isEmpty ? "Email looks good" : self.viewModel.usernameDesc)
+                    .lineLimit(nil)
+                    .font(.subheadline)
+                    .foregroundColor(self.viewModel.usernameDesc.isEmpty ? Color.green : Color.red)
+
+                TextField("Password", text: $viewModel.password)
+                    .textFieldStyle(CustomTextFieldStyle())
+
+                Text(self.viewModel.passwordDesc.isEmpty ? "Password looks good" : self.viewModel.passwordDesc)
+                    .lineLimit(nil)
+                    .font(.subheadline)
+                    .foregroundColor(self.viewModel.passwordDesc.isEmpty ? Color.green : Color.red)
+            }
 
             Button("Forgot Password") {
                 self.goToForgotPassword.toggle()

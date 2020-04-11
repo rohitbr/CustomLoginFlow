@@ -19,6 +19,8 @@ class LoginViewModel: ObservableObject {
     @Published public var description = ""
     @Published public var userState = UserState.unknown
     @Published public var userEntryValid = false
+    @Published public var usernameDesc = ""
+    @Published public var passwordDesc = ""
 
     private var validateEntries : AnyPublisher <Bool, Never> {
         return Publishers.CombineLatest($username, $password)
@@ -31,15 +33,47 @@ class LoginViewModel: ObservableObject {
         .eraseToAnyPublisher()
     }
 
+    private var emailDesc : AnyPublisher<String, Never> {
+            return $username
+                .removeDuplicates()
+                .flatMap { username in
+                    return Future { promise in
+                        let result = InputValidator.validate(email: username)
+                        promise(.success(result.errorReason ?? ""))
+                    }
+            }
+            .eraseToAnyPublisher()
+        }
+
+    private var passDesc : AnyPublisher<String, Never> {
+        return $password
+            .removeDuplicates()
+            .flatMap { password in
+                return Future { promise in
+                    let result = InputValidator.validate(password: password )
+                    promise(.success(result.errorReason ?? ""))
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
     static let awsService = AuthenticationService.instance
     
     init() {
         var subscriptions = Set<AnyCancellable>()
         getUserState()
         validateEntries
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .assign(to: \.userEntryValid, on: self)
             .store(in: &subscriptions)
+        emailDesc
+            .receive(on: DispatchQueue.main)
+            .assign(to : \.usernameDesc, on : self)
+            .store(in : &subscriptions)
+        passDesc
+            .receive(on: DispatchQueue.main)
+            .assign(to : \.passwordDesc, on : self)
+            .store(in : &subscriptions)
     }
 
     func getUserState() {

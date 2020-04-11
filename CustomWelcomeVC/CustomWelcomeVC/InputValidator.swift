@@ -16,16 +16,16 @@ public struct ValidationResult {
     public var errorReason: String? = nil
 }
 
-public struct InputValidator {
+class InputValidator {
   
     static let escapedSpecialRegexCharacters = "\\^$\\*\\.\\[\\]\\{\\}\\(\\)?\\-\"!@#%&\\/\\\\,><':;\\|_~`"
     static let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     static let minNumberOfCharactersInPassword = 8
     static let maxNumberOfCharactersInPassword = 256
-    static let success = ValidationResult(isValid: true, errorTitle: nil, errorReason: nil)
+    static let success = ValidationResult(isValid: true, errorTitle: nil, errorReason: "")
     
 
-   public static func validate(password: String, isSignIn: Bool) -> ValidationResult {
+   public static func validate(password: String) -> ValidationResult {
         guard !password.isEmpty else {
             return ValidationResult(isValid: false,
                                     errorTitle: "Password Required".local,
@@ -33,7 +33,7 @@ public struct InputValidator {
                 "Password field is required.".local)
         }
         
-        guard test(string: password, regex: getPasswordRegex()) || isSignIn else {
+        guard test(string: password, regex: getPasswordRegex()) else {
             return ValidationResult(isValid: false,
                                     errorTitle: "Invalid Password".local,
                                     errorReason: "PASSWORD_RULE".local)
@@ -41,7 +41,7 @@ public struct InputValidator {
         return InputValidator.success
     }
     
-   public static func validate(email: String) -> ValidationResult {
+    static func validate(email: String) -> ValidationResult {
         let tempString:String? = email.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let trimmedEmail = tempString else {
             return ValidationResult(isValid: false,
