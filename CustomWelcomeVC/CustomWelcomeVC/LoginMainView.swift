@@ -23,7 +23,7 @@ struct LoginMainView: View {
     }
 
     var body: some View {
-        VStack (spacing: 20) {
+        VStack(spacing : 20) {
             Image(Images.kLogoName)
                 .padding(.top, 20)
 
@@ -34,7 +34,7 @@ struct LoginMainView: View {
                     .textFieldStyle(CustomTextFieldStyle())
 
                 Text(self.viewModel.usernameDesc.isEmpty ? "Email looks good" : self.viewModel.usernameDesc)
-                    .lineLimit(nil)
+                    .lineLimit(3)
                     .font(.subheadline)
                     .foregroundColor(self.viewModel.usernameDesc.isEmpty ? Color.green : Color.red)
 
@@ -42,22 +42,24 @@ struct LoginMainView: View {
                     .textFieldStyle(CustomTextFieldStyle())
 
                 Text(self.viewModel.passwordDesc.isEmpty ? "Password looks good" : self.viewModel.passwordDesc)
-                    .lineLimit(nil)
+                    .lineLimit(3)
                     .font(.subheadline)
                     .foregroundColor(self.viewModel.passwordDesc.isEmpty ? Color.green : Color.red)
             }
 
-            Button("Forgot Password") {
+            Button("Forgot Password ?") {
                 self.goToForgotPassword.toggle()
             }.font(.subheadline)
                 .padding(5)
                 .border(Color.black, width: 1)
                 .foregroundColor(Color.red)
+                .multilineTextAlignment(.leading)
+
 
             Spacer()
 
             NavigationLink(destination: ForgotPasswordView(viewModel: .init()), isActive: $goToForgotPassword) {
-               Text("")
+                Text("")
             }
 
             RedRoundedButton("Sign in") {
@@ -71,6 +73,7 @@ struct LoginMainView: View {
                     self.goToSignup.toggle()
                 }
             }
+
         }
         .alert(isPresented: $viewModel.showModal) {
             Alert(title: Text("Auth message"), message: Text(viewModel.description), dismissButton: .destructive(Text("Ok")) {

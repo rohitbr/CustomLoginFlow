@@ -36,7 +36,7 @@ class InputValidator {
         guard test(string: password, regex: getPasswordRegex()) else {
             return ValidationResult(isValid: false,
                                     errorTitle: "Invalid Password".local,
-                                    errorReason: "PASSWORD_RULE".local)
+                                    errorReason: "Password should be min 8 characters with atleast one Capital, one Special character and on Number".local)
         }
         return InputValidator.success
     }
