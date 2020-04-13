@@ -25,7 +25,9 @@ class LoginViewModel: ObservableObject {
     private var validateEntries : AnyPublisher <Bool, Never> {
         return Publishers.CombineLatest($username, $password)
             .map { username, password in
-                guard !username.isEmpty && !password.isEmpty else {
+                let resultUsername = InputValidator.validate(email: username)
+                let resultPassword = InputValidator.validate(password: password)
+                guard resultUsername.isValid && resultPassword.isValid else {
                     return false
             }
             return true

@@ -10,4 +10,5 @@ import Foundation
 
 class Images {
     static let kLogoName = "logo"
+    static let closeButton = "Player – Close"
 }

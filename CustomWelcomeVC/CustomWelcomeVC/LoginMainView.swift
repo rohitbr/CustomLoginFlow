@@ -16,6 +16,7 @@ struct LoginMainView: View {
     @State private var goToForgotPassword = false
 
     @ObservedObject var viewModel : LoginViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(){
         UINavigationBar.setAnimationsEnabled(false)
@@ -33,28 +34,39 @@ struct LoginMainView: View {
                 TextField("Username", text: $viewModel.username)
                     .textFieldStyle(CustomTextFieldStyle())
 
-                Text(self.viewModel.usernameDesc.isEmpty ? "Email looks good" : self.viewModel.usernameDesc)
-                    .lineLimit(3)
+                HStack() {
+                Text(self.viewModel.usernameDesc.isEmpty ? "Email pattern good" : self.viewModel.usernameDesc)
+                    .lineLimit(nil)
                     .font(.subheadline)
                     .foregroundColor(self.viewModel.usernameDesc.isEmpty ? Color.green : Color.red)
+                    .padding(.leading)
+
+                Spacer()
+                }
 
                 TextField("Password", text: $viewModel.password)
                     .textFieldStyle(CustomTextFieldStyle())
 
-                Text(self.viewModel.passwordDesc.isEmpty ? "Password looks good" : self.viewModel.passwordDesc)
-                    .lineLimit(3)
+                HStack() {
+                Text(self.viewModel.passwordDesc.isEmpty ? "Password pattern good" : self.viewModel.passwordDesc)
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.subheadline)
                     .foregroundColor(self.viewModel.passwordDesc.isEmpty ? Color.green : Color.red)
+                    .padding(.leading)
+
+                Spacer()
+                }
             }
 
-            Button("Forgot Password ?") {
+            Button(action: {
                 self.goToForgotPassword.toggle()
-            }.font(.subheadline)
-                .padding(5)
-                .border(Color.black, width: 1)
-                .foregroundColor(Color.red)
-                .multilineTextAlignment(.leading)
-
+            }) {
+                Text("Forgot Password")
+                    .underline()
+            }
+            .font(.subheadline)
+            .padding(5)
+            .foregroundColor(Color.red)
 
             Spacer()
 
@@ -80,5 +92,13 @@ struct LoginMainView: View {
                 self.viewModel.okButtonPressed()
                 })
         }
+        .navigationBarItems(leading: EmptyView(), trailing:
+            Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(Images.closeButton)
+                    }
+            })
     }
 }
