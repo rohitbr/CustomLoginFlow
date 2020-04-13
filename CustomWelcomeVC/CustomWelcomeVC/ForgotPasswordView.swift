@@ -25,6 +25,16 @@ struct ForgotPasswordView: View {
 
             TextField("Email address", text: $viewModel.username)
                 .textFieldStyle(CustomTextFieldStyle())
+            
+            HStack() {
+            Text(self.viewModel.usernameDesc.isEmpty ? "Email pattern good" : self.viewModel.usernameDesc)
+                .lineLimit(nil)
+                .font(.subheadline)
+                .foregroundColor(self.viewModel.usernameDesc.isEmpty ? Color.green : Color.red)
+                .padding(.leading)
+
+            Spacer()
+            }
 
             Text("Enter your email address and we will send a verification code to your email address")
                 .lineLimit(nil)
@@ -32,6 +42,8 @@ struct ForgotPasswordView: View {
             RedRoundedButton("Reset Password") {
                 self.viewModel.forgotPasswordAction()
             }
+            .disabled(self.viewModel.usernameDesc.isEmpty ? false : true)
+            .opacity(self.viewModel.usernameDesc.isEmpty ?  1 : 0.6 )
 
             GrayButton("Already have an Account? Sign in") {
                 self.presentationMode.wrappedValue.dismiss()

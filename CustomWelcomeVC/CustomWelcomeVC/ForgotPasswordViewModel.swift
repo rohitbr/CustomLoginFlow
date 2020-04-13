@@ -15,9 +15,31 @@ class ForgotPasswordViewModel: ObservableObject {
     @Published public var description = ""
     @Published public var showModal = false
     @Published public var gotoVerificationView = false
+    @Published public var usernameDesc = ""
     let kCheckEmail = "Check your email"
 
     static let awsService = AuthenticationService.instance
+
+    init() {
+        var subscriptions = Set<AnyCancellable>()
+
+        emailDesc
+            .receive(on: DispatchQueue.main)
+            .assign(to : \.usernameDesc, on : self)
+            .store(in : &subscriptions)
+    }
+
+    private var emailDesc : AnyPublisher<String, Never> {
+        return $username
+            .removeDuplicates()
+            .flatMap { username in
+                return Future { promise in
+                    let result = InputValidator.validate(email: username)
+                    promise(.success(result.errorReason ?? ""))
+                }
+        }
+        .eraseToAnyPublisher()
+    }
 
     func forgotPasswordAction() {
         var subscriptions = Set<AnyCancellable>()
