@@ -27,8 +27,7 @@ struct WelcomeView: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
-                    .lineLimit(2)
-                    .lineSpacing(3)
+                    .lineLimit(nil)
 
                 Spacer()
 
