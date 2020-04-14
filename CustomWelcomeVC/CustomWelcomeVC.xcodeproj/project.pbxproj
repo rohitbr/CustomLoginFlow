@@ -11,6 +11,7 @@
 		F934C759243E6DF1002755B3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C758243E6DF1002755B3 /* SignupViewModel.swift */; };
 		F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C75A243ECED8002755B3 /* LaunchRoot.swift */; };
 		F959196224412891002470E0 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959196124412891002470E0 /* InputValidator.swift */; };
+		F96AA3652445F8DC002A5CAB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96AA3642445F8DC002A5CAB /* ContentViewModel.swift */; };
 		F9A3C5F32437710B00C25358 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F22437710B00C25358 /* RoundedButton.swift */; };
 		F9A3C5F52437715700C25358 /* ColorUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5F42437715700C25358 /* ColorUtilities.swift */; };
 		F9A3C5FB243AF27F00C25358 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3C5FA243AF27F00C25358 /* APIError.swift */; };
@@ -44,6 +45,7 @@
 		F934C758243E6DF1002755B3 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		F934C75A243ECED8002755B3 /* LaunchRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRoot.swift; sourceTree = "<group>"; };
 		F959196124412891002470E0 /* InputValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
+		F96AA3642445F8DC002A5CAB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		F9A3C5F22437710B00C25358 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		F9A3C5F42437715700C25358 /* ColorUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilities.swift; sourceTree = "<group>"; };
 		F9A3C5FA243AF27F00C25358 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -140,8 +142,9 @@
 			children = (
 				F9A65EC124351B530091A215 /* AppDelegate.swift */,
 				F9A65EC324351B530091A215 /* SceneDelegate.swift */,
-				F9A65EC524351B530091A215 /* ContentView.swift */,
 				F934C757243E6DC8002755B3 /* Utitlities */,
+				F9A65EC524351B530091A215 /* ContentView.swift */,
+				F96AA3642445F8DC002A5CAB /* ContentViewModel.swift */,
 				F9A65ED524351F190091A215 /* WelcomeView.swift */,
 				F9A65EE024352A1D0091A215 /* HomeView.swift */,
 				F9A4C7EC243BDAEA000B9658 /* HomeViewModel.swift */,
@@ -303,6 +306,7 @@
 				F9A4C7F9243D7699000B9658 /* ConfirmForgotPasswordView.swift in Sources */,
 				F9A65EDD2435252B0091A215 /* AuthenticationService.swift in Sources */,
 				F9A65EC624351B530091A215 /* ContentView.swift in Sources */,
+				F96AA3652445F8DC002A5CAB /* ContentViewModel.swift in Sources */,
 				F9A4C7E9243BAE01000B9658 /* LoginViewModel.swift in Sources */,
 				F9A4C7ED243BDAEA000B9658 /* HomeViewModel.swift in Sources */,
 				F9A65ED624351F190091A215 /* WelcomeView.swift in Sources */,

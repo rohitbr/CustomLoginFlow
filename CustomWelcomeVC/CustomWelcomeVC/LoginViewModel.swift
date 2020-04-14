@@ -17,7 +17,6 @@ class LoginViewModel: ObservableObject {
     @Published public var password : String = ""
     @Published public var showModal = false
     @Published public var description = ""
-    @Published public var userState = UserState.unknown
     @Published public var userEntryValid = false
     @Published public var usernameDesc = ""
     @Published public var passwordDesc = ""
@@ -63,7 +62,6 @@ class LoginViewModel: ObservableObject {
     
     init() {
         var subscriptions = Set<AnyCancellable>()
-        getUserState()
         validateEntries
             .receive(on: DispatchQueue.main)
             .assign(to: \.userEntryValid, on: self)
@@ -76,17 +74,6 @@ class LoginViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to : \.passwordDesc, on : self)
             .store(in : &subscriptions)
-    }
-
-    func getUserState() {
-        var subscriptions = Set<AnyCancellable>()
-        let userState = Self.awsService.getUserState()
-        userState
-            .sink(receiveCompletion: { print($0)
-            }, receiveValue: { userState in
-                self.userState = userState ?? UserState.unknown
-            })
-            .store(in: &subscriptions)
     }
 
     func okButtonPressed() {

@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    @ObservedObject var loginViewModel = LoginViewModel()
+    @ObservedObject var contentViewModel = ContentViewModel()
 
     var body: some View {
         VStack {
-            if loginViewModel.userState == .signedIn {
+            if contentViewModel.userState == .signedIn {
                 HomeView()
             } else {
                 WelcomeView()
