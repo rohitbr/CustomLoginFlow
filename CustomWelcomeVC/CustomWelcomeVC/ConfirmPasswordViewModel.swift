@@ -17,11 +17,11 @@ class ConfirmPasswordViewModel: ObservableObject {
     @Published public var newPassword : String = ""
     @Published public var description = ""
     @Published public var showModal = false
-    
+    var subscriptions = Set<AnyCancellable>()
+
     static let awsService = AuthenticationService.instance
 
     func confirmForgotPasswordAction() {
-        var subscriptions = Set<AnyCancellable>()
 
         if username.isEmpty || newPassword.isEmpty || verificationCode.isEmpty {
 

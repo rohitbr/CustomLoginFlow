@@ -17,12 +17,11 @@ class ForgotPasswordViewModel: ObservableObject {
     @Published public var gotoVerificationView = false
     @Published public var usernameDesc = ""
     let kCheckEmail = "Check your email"
+    var subscriptions = Set<AnyCancellable>()
 
     static let awsService = AuthenticationService.instance
 
     init() {
-        var subscriptions = Set<AnyCancellable>()
-
         emailDesc
             .receive(on: DispatchQueue.main)
             .assign(to : \.usernameDesc, on : self)
@@ -42,8 +41,6 @@ class ForgotPasswordViewModel: ObservableObject {
     }
 
     func forgotPasswordAction() {
-        var subscriptions = Set<AnyCancellable>()
-
         if username.isEmpty {
             return
         }

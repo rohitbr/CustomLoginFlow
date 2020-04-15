@@ -22,6 +22,7 @@ class SignupViewModel: ObservableObject {
     @Published public var passwordsValid = false
     @Published public var originalPasswordDesc = ""
     @Published public var allFieldsValid = false
+    var subscriptions = Set<AnyCancellable>()
 
     private var emailDesc : AnyPublisher<String, Never> {
         return $username
@@ -77,8 +78,6 @@ class SignupViewModel: ObservableObject {
 
 
     init() {
-        var subscriptions = Set<AnyCancellable>()
-        
         emailDesc
             .receive(on: DispatchQueue.main)
             .assign(to : \.usernameDesc, on : self)
@@ -100,7 +99,6 @@ class SignupViewModel: ObservableObject {
     let kSignupSuccessful = "Sign up successful"
 
     func buttonActionSignup() {
-        var subscriptions = Set<AnyCancellable>()
         let signUp = AuthenticationService.instance.signUp(username: username, password: password)
 
         signUp

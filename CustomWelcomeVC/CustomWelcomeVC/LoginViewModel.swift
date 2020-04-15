@@ -20,6 +20,7 @@ class LoginViewModel: ObservableObject {
     @Published public var userEntryValid = false
     @Published public var usernameDesc = ""
     @Published public var passwordDesc = ""
+    var subscriptions = Set<AnyCancellable>()
 
     private var validateEntries : AnyPublisher <Bool, Never> {
         return Publishers.CombineLatest($username, $password)
@@ -61,7 +62,6 @@ class LoginViewModel: ObservableObject {
     static let awsService = AuthenticationService.instance
     
     init() {
-        var subscriptions = Set<AnyCancellable>()
         validateEntries
             .receive(on: DispatchQueue.main)
             .assign(to: \.userEntryValid, on: self)
@@ -83,8 +83,6 @@ class LoginViewModel: ObservableObject {
     }
 
     func buttonAction() {
-        var subscriptions = Set<AnyCancellable>()
-
         let signin = Self.awsService.signIn(userName: username, password: password)
 
         signin
