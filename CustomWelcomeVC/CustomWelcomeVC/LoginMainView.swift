@@ -92,7 +92,8 @@ struct LoginMainView: View {
                 self.viewModel.okButtonPressed()
                 })
         }
-        .navigationBarItems(leading: EmptyView(), trailing:
+    .navigationBarBackButtonHidden(true)
+        .navigationBarItems(trailing:
             Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
