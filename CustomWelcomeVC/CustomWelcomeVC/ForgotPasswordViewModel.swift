@@ -11,11 +11,12 @@ import AWSMobileClient
 
 class ForgotPasswordViewModel: ObservableObject {
 
-    @Published public var username = ""
-    @Published public var description = ""
-    @Published public var showModal = false
-    @Published public var gotoVerificationView = false
-    @Published public var usernameDesc = ""
+    @Published var username = ""
+    @Published var description = ""
+    @Published var showModal = false
+    @Published var gotoVerificationView = false
+    @Published var usernameDesc = ""
+
     let kCheckEmail = "Check your email"
     var subscriptions = Set<AnyCancellable>()
 

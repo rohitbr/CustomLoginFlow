@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2F1CB62BE7273A008BA16E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F1CB52BE7273A008BA16E /* ForgotPasswordView.swift */; };
 		F90AE8BA24366B1F005F90C8 /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90AE8B924366B1F005F90C8 /* LoginMainView.swift */; };
 		F934C759243E6DF1002755B3 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C758243E6DF1002755B3 /* SignupViewModel.swift */; };
 		F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934C75A243ECED8002755B3 /* LaunchRoot.swift */; };
@@ -18,7 +19,6 @@
 		F9A4C7E9243BAE01000B9658 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7E8243BAE01000B9658 /* LoginViewModel.swift */; };
 		F9A4C7ED243BDAEA000B9658 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7EC243BDAEA000B9658 /* HomeViewModel.swift */; };
 		F9A4C7F1243D17B3000B9658 /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7F0243D17B3000B9658 /* CustomTextFieldStyle.swift */; };
-		F9A4C7F5243D1E1D000B9658 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7F4243D1E1D000B9658 /* ForgotPasswordView.swift */; };
 		F9A4C7F7243D2169000B9658 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7F6243D2169000B9658 /* ForgotPasswordViewModel.swift */; };
 		F9A4C7F9243D7699000B9658 /* ConfirmForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7F8243D7699000B9658 /* ConfirmForgotPasswordView.swift */; };
 		F9A4C7FB243D76D8000B9658 /* ConfirmPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A4C7FA243D76D8000B9658 /* ConfirmPasswordViewModel.swift */; };
@@ -40,6 +40,7 @@
 /* Begin PBXFileReference section */
 		0A8E4F227C41C9DABF626A33 /* Pods_CustomWelcomeVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomWelcomeVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC575B1829857008816B036 /* Pods-CustomWelcomeVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomWelcomeVC.release.xcconfig"; path = "Target Support Files/Pods-CustomWelcomeVC/Pods-CustomWelcomeVC.release.xcconfig"; sourceTree = "<group>"; };
+		7A2F1CB52BE7273A008BA16E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		EA9DB563109081C93809DA17 /* Pods-CustomWelcomeVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomWelcomeVC.debug.xcconfig"; path = "Target Support Files/Pods-CustomWelcomeVC/Pods-CustomWelcomeVC.debug.xcconfig"; sourceTree = "<group>"; };
 		F90AE8B924366B1F005F90C8 /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		F934C758243E6DF1002755B3 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		F9A4C7E8243BAE01000B9658 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F9A4C7EC243BDAEA000B9658 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F9A4C7F0243D17B3000B9658 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
-		F9A4C7F4243D1E1D000B9658 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordView.swift; path = /Users/Rohit/CustomLoginFlow/CustomWelcomeVC/CustomWelcomeVC/ForgotPasswordView.swift; sourceTree = "<absolute>"; };
 		F9A4C7F6243D2169000B9658 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		F9A4C7F8243D7699000B9658 /* ConfirmForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmForgotPasswordView.swift; sourceTree = "<group>"; };
 		F9A4C7FA243D76D8000B9658 /* ConfirmPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 				F959196124412891002470E0 /* InputValidator.swift */,
 				F90AE8B924366B1F005F90C8 /* LoginMainView.swift */,
 				F9A4C7E8243BAE01000B9658 /* LoginViewModel.swift */,
-				F9A4C7F4243D1E1D000B9658 /* ForgotPasswordView.swift */,
+				7A2F1CB52BE7273A008BA16E /* ForgotPasswordView.swift */,
 				F9A4C7F6243D2169000B9658 /* ForgotPasswordViewModel.swift */,
 				F9A4C7F8243D7699000B9658 /* ConfirmForgotPasswordView.swift */,
 				F9A4C7FA243D76D8000B9658 /* ConfirmPasswordViewModel.swift */,
@@ -296,7 +296,6 @@
 			files = (
 				F9A72A0F24367C5600E92DC4 /* SignupView.swift in Sources */,
 				F9A3C5F32437710B00C25358 /* RoundedButton.swift in Sources */,
-				F9A4C7F5243D1E1D000B9658 /* ForgotPasswordView.swift in Sources */,
 				F9A65EC224351B530091A215 /* AppDelegate.swift in Sources */,
 				F9A65EE124352A1D0091A215 /* HomeView.swift in Sources */,
 				F9A65EC424351B530091A215 /* SceneDelegate.swift in Sources */,
@@ -304,6 +303,7 @@
 				F9A65EDB2435223E0091A215 /* Images.swift in Sources */,
 				F934C75B243ECED8002755B3 /* LaunchRoot.swift in Sources */,
 				F9A4C7F9243D7699000B9658 /* ConfirmForgotPasswordView.swift in Sources */,
+				7A2F1CB62BE7273A008BA16E /* ForgotPasswordView.swift in Sources */,
 				F9A65EDD2435252B0091A215 /* AuthenticationService.swift in Sources */,
 				F9A65EC624351B530091A215 /* ContentView.swift in Sources */,
 				F96AA3652445F8DC002A5CAB /* ContentViewModel.swift in Sources */,

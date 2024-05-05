@@ -10,15 +10,15 @@ import SwiftUI
 
 struct RedRoundedButton: View {
     
-    public var buttonTitle:String
-    public var action: () -> Void
+    var buttonTitle:String
+    var action: () -> Void
     
-    public init(_ buttonTitle:String, action:@escaping (() -> Void)) {
+    init(_ buttonTitle:String, action:@escaping (() -> Void)) {
         self.buttonTitle = buttonTitle
         self.action = action
     }
     
-    public var body: some View {
+    var body: some View {
         Button(action: action) {
             Text(buttonTitle)
                 .frame(width: 300)
@@ -34,12 +34,12 @@ struct RedRoundedButton: View {
     }
 }
  
-public struct GrayButton: View {
+struct GrayButton: View {
     
     var buttonTitle:String
     var action: () -> Void
     
-    public init( _ buttonTitle:String, action:@escaping (() -> Void)) {
+    init( _ buttonTitle:String, action:@escaping (() -> Void)) {
         self.buttonTitle = buttonTitle
         self.action = action
     }

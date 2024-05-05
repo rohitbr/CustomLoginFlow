@@ -13,13 +13,16 @@ import SwiftUI
 class LoginViewModel: ObservableObject {
 
     let kSuccessful = "Successful login"
-    @Published public var username : String = ""
-    @Published public var password : String = ""
-    @Published public var showModal = false
-    @Published public var description = ""
-    @Published public var userEntryValid = false
-    @Published public var usernameDesc = ""
-    @Published public var passwordDesc = ""
+    @Published var username : String = ""
+    @Published var password : String = ""
+    @Published var showModal = false
+    @Published var description = ""
+    @Published var userEntryValid = false
+    @Published var usernameDesc = ""
+    @Published var passwordDesc = ""
+    @Published var goToSignup = false
+    @Published var goToForgotPassword = false
+
     var subscriptions = Set<AnyCancellable>()
 
     private var validateEntries : AnyPublisher <Bool, Never> {

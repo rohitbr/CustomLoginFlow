@@ -11,7 +11,7 @@ import AWSMobileClient
 
 class ContentViewModel: ObservableObject {
 
-    @Published public var userState = UserState.unknown
+    @Published var userState = UserState.unknown
     static let awsService = AuthenticationService.instance
 
     init() {

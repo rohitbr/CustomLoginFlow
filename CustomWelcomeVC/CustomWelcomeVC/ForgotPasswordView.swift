@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct ForgotPasswordView: View {
-    @State var gotoSigninView = false
     @ObservedObject var viewModel : ForgotPasswordViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 

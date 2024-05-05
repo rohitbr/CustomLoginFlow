@@ -9,11 +9,10 @@
 
 import Foundation
 
-
-public struct ValidationResult {
-    public let isValid: Bool
-    public var errorTitle: String? = nil
-    public var errorReason: String? = nil
+struct ValidationResult {
+     let isValid: Bool
+     var errorTitle: String? = nil
+     var errorReason: String? = nil
 }
 
 class InputValidator {
@@ -23,9 +22,8 @@ class InputValidator {
     static let minNumberOfCharactersInPassword = 8
     static let maxNumberOfCharactersInPassword = 256
     static let success = ValidationResult(isValid: true, errorTitle: nil, errorReason: "")
-    
 
-   public static func validate(password: String) -> ValidationResult {
+    static func validate(password: String) -> ValidationResult {
         guard !password.isEmpty else {
             return ValidationResult(isValid: false,
                                     errorTitle: "Password Required".local,
@@ -64,7 +62,7 @@ class InputValidator {
     }
     
 
-   public static func validate(verificationCode: String) -> ValidationResult {
+   static func validate(verificationCode: String) -> ValidationResult {
         guard !verificationCode.isEmpty else {
             return ValidationResult(isValid: false, errorTitle: "Invalid Verification Code".local, errorReason: "Verification code is invalid. Please try again.".local)
         }
@@ -72,7 +70,7 @@ class InputValidator {
     }
     
 
-   public static func validateMatchPassword(field1: String, field2: String) -> ValidationResult {
+    static func validateMatchPassword(field1: String, field2: String) -> ValidationResult {
         guard field1 == field2 else {
             return ValidationResult(isValid: false,
                                     errorTitle: "Password Error".local,
@@ -92,7 +90,7 @@ class InputValidator {
     }
     
 
-   public static func validateAlphaNumeric(text: String)  -> Bool {
+    static func validateAlphaNumeric(text: String)  -> Bool {
         let validCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890").inverted
         return text.rangeOfCharacter(from: validCharacterSet) == nil
     }
@@ -101,7 +99,7 @@ class InputValidator {
 
 extension String {
     
-    public var local:String {
+    var local:String {
         return NSLocalizedString(self, comment: "")
     }
 }

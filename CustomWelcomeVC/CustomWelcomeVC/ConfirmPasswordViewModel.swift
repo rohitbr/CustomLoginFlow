@@ -12,11 +12,11 @@ import Combine
 class ConfirmPasswordViewModel: ObservableObject {
 
     let kVerified = "Verified"
-    @Published public var verificationCode : String = ""
-    @Published public var username : String = ""
-    @Published public var newPassword : String = ""
-    @Published public var description = ""
-    @Published public var showModal = false
+    @Published var verificationCode : String = ""
+    @Published var username : String = ""
+    @Published var newPassword : String = ""
+    @Published var description = ""
+    @Published var showModal = false
     var subscriptions = Set<AnyCancellable>()
 
     static let awsService = AuthenticationService.instance

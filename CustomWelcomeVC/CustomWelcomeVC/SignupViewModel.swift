@@ -11,17 +11,17 @@ import UIKit
 
 class SignupViewModel: ObservableObject {
 
-    @Published public var username : String = ""
-    @Published public var password : String = ""
-    @Published public var confirmPassword : String = ""
-    @Published public var goToHome = false
-    @Published public var showModal = false
-    @Published public var gotoHomeView = false
-    @Published public var description = ""
-    @Published public var usernameDesc = ""
-    @Published public var passwordsValid = false
-    @Published public var originalPasswordDesc = ""
-    @Published public var allFieldsValid = false
+    @Published var username : String = ""
+    @Published var password : String = ""
+    @Published var confirmPassword : String = ""
+    @Published var goToHome = false
+    @Published var showModal = false
+    @Published var gotoHomeView = false
+    @Published var description = ""
+    @Published var usernameDesc = ""
+    @Published var passwordsValid = false
+    @Published var originalPasswordDesc = ""
+    @Published var allFieldsValid = false
     var subscriptions = Set<AnyCancellable>()
 
     private var emailDesc : AnyPublisher<String, Never> {

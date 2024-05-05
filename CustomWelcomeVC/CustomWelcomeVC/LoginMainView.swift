@@ -11,10 +11,6 @@ import Combine
 import AWSMobileClient
 
 struct LoginMainView: View {
-
-    @State private var goToSignup = false
-    @State private var goToForgotPassword = false
-
     @ObservedObject var viewModel : LoginViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -59,7 +55,7 @@ struct LoginMainView: View {
             }
 
             Button(action: {
-                self.goToForgotPassword.toggle()
+                viewModel.goToForgotPassword.toggle()
             }) {
                 Text("Forgot Password")
                     .underline()
@@ -70,7 +66,7 @@ struct LoginMainView: View {
 
             Spacer()
 
-            NavigationLink(destination: ForgotPasswordView(viewModel: .init()), isActive: $goToForgotPassword) {
+            NavigationLink(destination: ForgotPasswordView(viewModel: .init()), isActive: $viewModel.goToForgotPassword) {
                 Text("")
             }
 
@@ -80,16 +76,16 @@ struct LoginMainView: View {
             .disabled(self.viewModel.userEntryValid ? false : true)
             .opacity(self.viewModel.userEntryValid ?  1 : 0.6 )
 
-            NavigationLink(destination: SignupView(viewModel: .init()), isActive: $goToSignup) {
+            NavigationLink(destination: SignupView(viewModel: .init()), isActive: $viewModel.goToSignup) {
                 GrayButton("Dont have account ? Sign Up") {
-                    self.goToSignup.toggle()
+                    viewModel.goToSignup.toggle()
                 }
             }
 
         }
         .alert(isPresented: $viewModel.showModal) {
             Alert(title: Text("Auth message"), message: Text(viewModel.description), dismissButton: .destructive(Text("Ok")) {
-                self.viewModel.okButtonPressed()
+                viewModel.okButtonPressed()
                 })
         }
     .navigationBarBackButtonHidden(true)
